@@ -1,2 +1,1 @@
-2rrr-popup-player-widget
-========================
+# RRR custom popup player - wp widget
