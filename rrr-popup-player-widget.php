@@ -3,7 +3,7 @@
 Plugin Name: RRR Popup Player Widget
 Plugin URI:
 Description:
-Version: 0.1
+Version: 0.2
 Author: D.Black
 Author URI: http://snippets.khromov.se
 License: GPL2
