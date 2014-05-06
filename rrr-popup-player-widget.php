@@ -3,7 +3,7 @@
 Plugin Name: RRR Popup Player Widget
 Plugin URI:
 Description: 2RRR custom popup player widget
-Version: 0.3
+Version: 0.4
 Author: D.Black
 Author URI:
 License: GPL2
@@ -36,8 +36,9 @@ class RRR_Popup_Player_Widget extends WP_Widget {
 		//var_dump($this->textdomain);
 
 		//Add fields
-		$this->add_field('title', 'Enter title', '', 'text');
-		$this->add_field('example_field', 'Example field', 'This is the default value', 'text');
+		$this->add_field('source', 'Stream source', 'http://110.142.218.7:88/broadwave.mp3', 'text');
+		$this->add_field('player_height', 'Player page height', '330', 'text');
+		$this->add_field('player_width', 'Player page width', '430', 'text');
 
 		//Translations
 		//load_plugin_textdomain($this->textdomain, false, basename(dirname(__FILE__)) . '/languages' );
