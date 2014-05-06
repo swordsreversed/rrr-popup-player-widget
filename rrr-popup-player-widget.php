@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: 2RRR Popup Player Widget
+Plugin Name: RRR Popup Player Widget
 Plugin URI:
 Description:
 Version: 0.1
@@ -12,15 +12,15 @@ License: GPL2
 /**
  * Register the widget
  */
-add_action('widgets_init', create_function('', 'return register_widget("2RRR_Popup_Player_Widget");'));
+add_action('widgets_init', create_function('', 'return register_widget("RRR_Popup_Player_Widget");'));
 
 /**
- * Class 2RRR_Popup_Player_Widget
+ * Class RRR_Popup_Player_Widget
  */
-class 2RRR_Popup_Player_Widget extends WP_Widget
+class RRR_Popup_Player_Widget extends WP_Widget
 {
 	/** Basic Widget Settings */
-	const WIDGET_NAME = "2RRR Popup Player Widget";
+	const WIDGET_NAME = "RRR Popup Player Widget";
 	const WIDGET_DESCRIPTION = "This is the description";
 
 	var $textdomain;
