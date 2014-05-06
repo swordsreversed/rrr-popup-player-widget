@@ -5,7 +5,7 @@ Plugin URI:
 Description: 2RRR custom popup player widget
 Version: 0.2
 Author: D.Black
-Author URI: 
+Author URI:
 License: GPL2
 */
 
@@ -17,8 +17,7 @@ add_action('widgets_init', create_function('', 'return register_widget("RRR_Popu
 /**
  * Class RRR_Popup_Player_Widget
  */
-class RRR_Popup_Player_Widget extends WP_Widget
-{
+class RRR_Popup_Player_Widget extends WP_Widget {
 	/** Basic Widget Settings */
 	const WIDGET_NAME = "RRR Popup Player Widget";
 	const WIDGET_DESCRIPTION = "2RRR custom popup player widget";
@@ -29,8 +28,7 @@ class RRR_Popup_Player_Widget extends WP_Widget
 	/**
 	 * Construct the widget
 	 */
-	function __construct()
-	{
+	function __construct() {
 		//We're going to use $this->textdomain as both the translation domain and the widget class name and ID
 		$this->textdomain = strtolower(get_class($this));
 
@@ -54,8 +52,7 @@ class RRR_Popup_Player_Widget extends WP_Widget
 	 * @param array $args
 	 * @param array $instance
 	 */
-	public function widget($args, $instance)
-	{
+	public function widget($args, $instance) {
 		$title = apply_filters('widget_title', $instance['title']);
 
 		/* Before and after widget arguments are usually modified by themes */
@@ -74,20 +71,29 @@ class RRR_Popup_Player_Widget extends WP_Widget
 	/**
 	 * This function will execute the widget frontend logic.
 	 * Everything you want in the widget should be output here.
+	 *
+	 * @param array $args
+	 * @param array $instance
 	 */
-	private function widget_output($args, $instance)
-	{
+	private function widget_output($args, $instance) {
 		extract($instance);
 
-		/**
-		 * This is where you write your custom code.
-		 */
 		?>
-			<p>
-				Here is the widget <?php echo $title; ?> <br/>
-				And here is our example field: <?php echo $example_field; ?>
-				<!-- The variable above can also be reached via $instance['example_field']; -->
-			</p>
+		<script>
+			var windowObjectReference;
+			var strWindowFeatures = "menubar=no,location=0,resizable=no,scrollbars=no,status=no,height=<?php echo $player_height; ?>,width=<?php echo $player_width; ?>";
+
+			function openRequestedPopup() {
+			  windowObjectReference = window.open("/livestream", "2RRR Popup Player", strWindowFeatures);
+			}
+		</script>
+		<?php
+			echo do_shortcode('[audio src='.$source.']');
+		?>
+		<div class="gutter-top">
+			<a href="javascript: openRequestedPopup();">Listen Online Now - <small>Popup Player</small></a>
+		</div>
+
 		<?php
 	}
 
@@ -97,11 +103,9 @@ class RRR_Popup_Player_Widget extends WP_Widget
 	 * @param array $instance
 	 * @return string|void
 	 */
-	public function form( $instance )
-	{
+	public function form( $instance ) {
 		/* Generate admin for fields */
-		foreach($this->fields as $field_name => $field_data)
-		{
+		foreach($this->fields as $field_name => $field_data) {
 			if($field_data['type'] === 'text'):
 				?>
 				<p>
@@ -125,8 +129,7 @@ class RRR_Popup_Player_Widget extends WP_Widget
 	 * @param string $field_default_value
 	 * @param string $field_type
 	 */
-	private function add_field($field_name, $field_description = '', $field_default_value = '', $field_type = 'text')
-	{
+	private function add_field($field_name, $field_description = '', $field_default_value = '', $field_type = 'text') {
 		if(!is_array($this->fields))
 			$this->fields = array();
 
@@ -140,8 +143,7 @@ class RRR_Popup_Player_Widget extends WP_Widget
 	 * @param array $old_instance
 	 * @return array
 	 */
-	public function update($new_instance, $old_instance)
-	{
+	public function update($new_instance, $old_instance) {
 		return $new_instance;
 	}
 }
