@@ -2,10 +2,10 @@
 /*
 Plugin Name: RRR Popup Player Widget
 Plugin URI:
-Description:
+Description: 2RRR custom popup player widget
 Version: 0.2
 Author: D.Black
-Author URI: http://snippets.khromov.se
+Author URI: 
 License: GPL2
 */
 
@@ -21,7 +21,7 @@ class RRR_Popup_Player_Widget extends WP_Widget
 {
 	/** Basic Widget Settings */
 	const WIDGET_NAME = "RRR Popup Player Widget";
-	const WIDGET_DESCRIPTION = "This is the description";
+	const WIDGET_DESCRIPTION = "2RRR custom popup player widget";
 
 	var $textdomain;
 	var $fields;
@@ -42,7 +42,7 @@ class RRR_Popup_Player_Widget extends WP_Widget
 		$this->add_field('example_field', 'Example field', 'This is the default value', 'text');
 
 		//Translations
-		load_plugin_textdomain($this->textdomain, false, basename(dirname(__FILE__)) . '/languages' );
+		//load_plugin_textdomain($this->textdomain, false, basename(dirname(__FILE__)) . '/languages' );
 
 		//Init the widget
 		parent::__construct($this->textdomain, __(self::WIDGET_NAME, $this->textdomain), array( 'description' => __(self::WIDGET_DESCRIPTION, $this->textdomain), 'classname' => $this->textdomain));
@@ -70,7 +70,7 @@ class RRR_Popup_Player_Widget extends WP_Widget
 		/* After widget */
 		echo $args['after_widget'];
 	}
-	
+
 	/**
 	 * This function will execute the widget frontend logic.
 	 * Everything you want in the widget should be output here.
