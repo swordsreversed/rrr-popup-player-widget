@@ -1,9 +1,9 @@
-<?php
+:<?php
 /*
 Plugin Name: RRR Popup Player Widget
 Plugin URI:
 Description: 2RRR custom popup player widget
-Version: 0.5
+Version: 0.5.1
 Author: D.Black
 Author URI:
 License: GPL2
@@ -91,7 +91,7 @@ class RRR_Popup_Player_Widget extends WP_Widget {
     <?php
       echo do_shortcode('[audio src='.$source.']');
     ?>
-    <div class="gutter-top">
+    <div class="gutter-top hidden-xs">
       <a href="javascript: openRequestedPopup();">Listen Online Now - <small>Popup Player</small></a>
     </div>
 
@@ -108,16 +108,16 @@ class RRR_Popup_Player_Widget extends WP_Widget {
     /* Generate admin for fields */
     foreach($this->fields as $field_name => $field_data) {
       if($field_data['type'] === 'text'):
-	?>
-	<p>
-	  <label for="<?php echo $this->get_field_id($field_name); ?>"><?php _e($field_data['description'], $this->textdomain ); ?></label>
-	  <input class="widefat" id="<?php echo $this->get_field_id($field_name); ?>" name="<?php echo $this->get_field_name($field_name); ?>" type="text" value="<?php echo esc_attr(isset($instance[$field_name]) ? $instance[$field_name] : $field_data['default_value']); ?>" />
-	</p>
+  ?>
+  <p>
+    <label for="<?php echo $this->get_field_id($field_name); ?>"><?php _e($field_data['description'], $this->textdomain ); ?></label>
+    <input class="widefat" id="<?php echo $this->get_field_id($field_name); ?>" name="<?php echo $this->get_field_name($field_name); ?>" type="text" value="<?php echo esc_attr(isset($instance[$field_name]) ? $instance[$field_name] : $field_data['default_value']); ?>" />
+  </p>
       <?php
       //elseif($field_data['type'] == 'textarea'):
       //You can implement more field types like this.
       else:
-	echo __('Error - Field type not supported', $this->textdomain) . ': ' . $field_data['type'];
+  echo __('Error - Field type not supported', $this->textdomain) . ': ' . $field_data['type'];
       endif;
     }
   }
@@ -148,4 +148,5 @@ class RRR_Popup_Player_Widget extends WP_Widget {
     return $new_instance;
   }
 }
+
 
