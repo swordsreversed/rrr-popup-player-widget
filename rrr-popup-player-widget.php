@@ -1,9 +1,9 @@
-:<?php
+<?php
 /*
 Plugin Name: RRR Popup Player Widget
 Plugin URI:
 Description: 2RRR custom popup player widget
-Version: 0.5.1
+Version: 0.5.2
 Author: D.Black
 Author URI:
 License: GPL2
@@ -148,5 +148,6 @@ class RRR_Popup_Player_Widget extends WP_Widget {
     return $new_instance;
   }
 }
+
 
 
